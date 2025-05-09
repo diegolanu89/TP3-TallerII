@@ -1,6 +1,18 @@
-# TP3 - Taller II
+# 📚 TP3 Taller II - API de Libros
 
 Este proyecto consiste en la creación de un servidor HTTP basado en **Express** que escuche en el puerto **8080** y gestione el recurso **libros** mediante las rutas **GET**, **POST**, **PUT** y **DELETE**.
+
+## 🚀 Tecnologías Utilizadas
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
+  <img src="https://img.shields.io/badge/Materialize-CSS-EE6E73?style=for-the-badge&logo=materializecss&logoColor=white" alt="Materialize CSS" />
+  <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" alt="Jest" />
+  <img src="https://img.shields.io/badge/Supertest-9B59B6?style=for-the-badge&logo=testing-library&logoColor=white" alt="Supertest" />
+  <img src="https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white" alt="Nodemon" />
+  <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman" />
+</p>
 
 ## 📚 Descripción de funcionalidades
 

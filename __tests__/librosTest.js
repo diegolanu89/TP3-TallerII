@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use('/libros', libroRoutes);
 
 describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
-    it('Debería tirar alta tabla en GET /libros si le pedimos HTML', async () => {
+    it('Debería tirar tabla en GET /libros si le pedimos HTML', async () => {
         const response = await request(app)
             .get('/libros')
             .set('Accept', 'text/html');
