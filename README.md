@@ -33,3 +33,32 @@ Un libro será representado con una estructura JSON (almacenada dentro de un arr
   "autor": "Autor del libro",
   "año": 2024
 }
+```
+
+## 💽 Instalación
+
+```json
+npm install
+```
+
+## 🧪  Scripts Disponibles (Node scripts)
+
+### 📦 Ejecutar tests automáticamente
+
+```json
+npm run test:auto
+```
+
+### 🚀 Levantar servidor con nodemon
+
+
+```json
+npm run dev
+```
+
+
+## Task Code (VSCode):
+### ▶️ ¿Cómo se usan?
+- Abrí la paleta de comandos con Ctrl + Shift + P (o F1).
+
+- Escribí: Run Task o Ejecutar tarea, elegí la que quieras usar.
