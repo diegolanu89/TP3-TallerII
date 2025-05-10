@@ -14,7 +14,6 @@ function generarVistaLibros(libros) {
     const templatePath = path.join(__dirname, 'vistaLibros.html');
     let html = fs.readFileSync(templatePath, 'utf8');
 
-    // Reemplazar placeholder por la lista generada
     html = html.replace('<!-- LISTA_LIBROS -->', vistaLibros);
 
     return html;

@@ -5,6 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:auto": "nodemon --watch src --watch __tests__ --ext js,json --exec \"npm test\"",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },

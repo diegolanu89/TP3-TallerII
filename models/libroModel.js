@@ -1,9 +1,8 @@
+const librosIniciales = require('../constants/librosIniciales');
+
 class LibroModel {
     constructor() {
-        this.libros = [
-            { id: 1, titulo: "Cien años de soledad", autor: "Gabriel García Márquez", año: 1967 },
-            { id: 2, titulo: "1984", autor: "George Orwell", año: 1949 }
-        ];
+        this.libros = [...librosIniciales]; 
     }
 
     obtenerTodos() {
@@ -37,4 +36,4 @@ class LibroModel {
     }
 }
 
-module.exports = new LibroModel(); 
+module.exports = new LibroModel();

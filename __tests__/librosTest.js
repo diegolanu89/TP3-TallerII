@@ -2,14 +2,15 @@ const request = require('supertest');
 const express = require('express');
 const libroRoutes = require('../routes/libroRoutes');
 const bodyParser = require('body-parser');
+const librosIniciales = require('../constants/librosIniciales');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/libros', libroRoutes);
 
-describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
-    it('Debería tirar tabla en GET /libros si le pedimos HTML', async () => {
+describe('API de Libros - Diego Peyrano 🇦🇷', () => {
+    it('Debería tirar alta tabla en GET /libros si le pedimos HTML', async () => {
         const response = await request(app)
             .get('/libros')
             .set('Accept', 'text/html');
@@ -17,10 +18,10 @@ describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
         expect(response.status).toBe(200);
         expect(response.headers['content-type']).toMatch(/html/);
         expect(response.text).toContain('<table');
-        expect(response.text).toContain('Cien años de soledad');
+        expect(response.text).toContain(librosIniciales[0].titulo);
     });
 
-    it('Debería mandar JSON  en GET /libros si pedimos application/json', async () => {
+    it('Debería mandar JSON piola en GET /libros si pedimos application/json', async () => {
         const response = await request(app)
             .get('/libros')
             .set('Accept', 'application/json');
@@ -28,7 +29,6 @@ describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
         expect(response.status).toBe(200);
         expect(response.headers['content-type']).toMatch(/json/);
         expect(Array.isArray(response.body)).toBe(true);
-        expect(response.body.length).toBeGreaterThan(0);
         expect(response.body[0]).toHaveProperty('id');
         expect(response.body[0]).toHaveProperty('titulo');
         expect(response.body[0]).toHaveProperty('autor');
@@ -43,7 +43,7 @@ describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
         expect(response.status).toBe(200);
         expect(response.headers['content-type']).toMatch(/html/);
         expect(response.text).toContain('<ul');
-        expect(response.text).toContain('Cien años de soledad');
+        expect(response.text).toContain(librosIniciales[0].titulo);
     });
 
     it('Debería devolver JSON del libro 1 al pedirlo en JSON', async () => {
@@ -53,8 +53,8 @@ describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
 
         expect(response.status).toBe(200);
         expect(response.headers['content-type']).toMatch(/json/);
-        expect(response.body).toHaveProperty('id', 1);
-        expect(response.body).toHaveProperty('titulo', 'Cien años de soledad');
+        expect(response.body).toHaveProperty('id', librosIniciales[0].id);
+        expect(response.body).toHaveProperty('titulo', librosIniciales[0].titulo);
     });
 
     it('Debería avisar que no existe el libro 999 en JSON', async () => {
@@ -83,15 +83,14 @@ describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
         expect(postResponse.status).toBe(201);
         expect(postResponse.body).toHaveProperty('mensaje');
 
-        // hacer GET dentro del MISMO test
         const getResponse = await request(app)
             .get('/libros')
             .set('Accept', 'application/json');
 
-        expect(getResponse.body.some(libro => libro.id === 3 && libro.autor === 'Diego Peyrano')).toBe(true);
+        expect(getResponse.body.some(libro => libro.id === nuevoLibro.id && libro.autor === nuevoLibro.autor)).toBe(true);
     });
 
-    it('Debería actualizar el autor del libro 1 a Diego Peyrano', async () => {
+    it('Debería actualizar el autor del libro 1 a Diego Peyrano y que quede pipi-cucú', async () => {
         const updateResponse = await request(app)
             .put('/libros/1')
             .send({ autor: 'Diego Peyrano' })
@@ -108,7 +107,7 @@ describe('API de Libros - Testeado por Diego Peyrano 🇦🇷', () => {
         expect(libroActualizado.body.autor).toBe('Diego Peyrano');
     });
 
-    it('Debería borrar al libro 1 y después no encontrarlos', async () => {
+    it('Debería borrar al libro 1 y después no encontrarlo ni a palos', async () => {
         const deleteResponse = await request(app)
             .delete('/libros/1')
             .set('Accept', 'application/json');
